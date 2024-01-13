@@ -24,6 +24,9 @@ resource "digitalocean_droplet" "slave" {
   }
 
   provisioner "remote-exec" {
+    on_failure = fail
+    when       = create
+
     inline = [
       "export PATH=$PATH:/usr/bin",
       # Install Docker
@@ -55,5 +58,5 @@ resource "digitalocean_droplet" "slave" {
     ]
   }
 
-  tags = ["swarm", "slave", var.env]
+  tags = ["swarm", "slave", var.env, format("%s-cluster-node", var.env)]
 }
