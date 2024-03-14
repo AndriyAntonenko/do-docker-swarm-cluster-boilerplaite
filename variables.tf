@@ -20,3 +20,15 @@ variable "ssh_key" {
   type        = string
   description = "Name of the SSH key in DigitalOcean"
 }
+
+variable "master_size" {
+  type        = string
+  default     = "s-1vcpu-2gb"
+  description = "Size of the master node"
+}
+
+variable "slave_size" {
+  type        = string
+  default     = "s-1vcpu-2gb"
+  description = "Size of the worker nodes"
+}
